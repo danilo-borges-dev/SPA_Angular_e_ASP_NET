@@ -10,7 +10,7 @@ export class AlunosComponent implements OnInit {
 
   public titulo = "Alunos";
   public idDeAluno = "Código";
-  public alunoSelecionado!: Aluno;
+  public alunoSelecionado!: Aluno | null;
   public idDoAlunoSelecionado: number = 0;
 
   public alunos = [
@@ -29,7 +29,7 @@ export class AlunosComponent implements OnInit {
   }
 
   voltar () {
-    this.alunos;
+    this.alunoSelecionado = null;
   }
 
   constructor() { }
