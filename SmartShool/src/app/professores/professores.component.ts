@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ProfessoresComponent implements OnInit {
 
   public titulo = "Professores";
+  public professorSelecionado: string = "";
+  public idDoProfessorSelecionado: string = "";
 
   public professores = [
     { id: 1, nome: "Danilo", diciplina:  "Matemática"},
@@ -16,6 +18,15 @@ export class ProfessoresComponent implements OnInit {
     { id: 4, nome: "Sueli", diciplina:  "Português"},
     { id: 5, nome: "Rosana", diciplina:  "Redação"},
   ];
+
+  professorSelec (professor: any) {
+    this.professorSelecionado = professor.nome;
+    this.idDoProfessorSelecionado = professor.id;
+  }
+
+  voltar () {
+    this.professorSelecionado = "";
+  }
 
   constructor() { }
 

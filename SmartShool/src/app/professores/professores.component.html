@@ -1,18 +1,51 @@
-<app-titulo [titulo]="titulo"></app-titulo>
+<div *ngIf="professorSelecionado">
+  <div class="row">
+    <div class="ms-auto mb-2 mb-lg-0">
+      <app-titulo [titulo]="'Aluno: ' + professorSelecionado"></app-titulo>
+      <h3>Código: {{ idDoProfessorSelecionado }}</h3>
+    </div>
+    <div class="mt-1">
+      <button class="btn btn-warning" (click)="voltar()">Lista de Estudantes</button>
+    </div>
+  </div>
 
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Código</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Diciplina</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let professor of professores">
-      <th scope="row">{{professor.id}}</th>
-      <td>{{professor.nome}}</td>
-      <td>{{professor.diciplina}}</td>
-    </tr>
-  </tbody>
-</table>
+  <br>
+
+  <form>
+    <div class="form-group">
+      <label for="formGroupExampleInput">Nome</label>
+      <input type="text" class="form-control" placeholder="Nome">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Sobrenome</label>
+      <input type="text" class="form-control" placeholder="Sobrenome">
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Telefone</label>
+      <input type="text" class="form-control" placeholder="Telefone">
+    </div>
+  </form>
+</div>
+
+
+<div *ngIf="!professorSelecionado">
+  <app-titulo [titulo]="'Professores'"></app-titulo>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Código</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Diciplina</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let professor of professores" style="cursor: pointer;" (click)="professorSelec(professor)">
+        <th scope="row">{{professor.id}}</th>
+        <td>{{professor.nome}}</td>
+        <td>{{professor.diciplina}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
